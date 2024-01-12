@@ -17,7 +17,7 @@ class W_matrices:
 
 class One_Head_Attention:
     def __init__(self, X, d_k, d_v):
-        self.d_model = len(X)
+        self.d_model = X.shape[1]
         self.W_mat = W_matrices(self.d_model, d_k, d_v)
 
         self.Q = np.matmul(X, self.W_mat.W_Q)
@@ -48,7 +48,7 @@ class One_Head_Attention:
 
 class Multi_Head_Attention:
     def __init__(self, n_heads, X, d_k, d_v):
-        self.d_model = len(X)
+        self.d_model = X.shape[1]
         self.n_heads = n_heads
         self.d_k = d_k
         self.d_v = d_v
